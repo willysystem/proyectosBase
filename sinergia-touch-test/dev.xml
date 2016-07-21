@@ -1,0 +1,54 @@
+<?xml version ="1.0" encoding="utf-8" ?>
+<project name="Pharos Modules Compile" default="compile" basedir=".">
+	<description>
+		 Este archivo permite compilar un modulo, un grupo de modulos o todos a vez.
+	</description>
+
+	<property environment="env" />
+	<property name="gwt.home" value="I:\dev\gwt-2.7.0" />
+	<property name="m2.directory" value="C:\Users\Ciro_2\.m2\repository" />
+	<property name="logLevel" value="ERROR" />
+	<!-- INFO, TRACE, DEGUG, ERROR -->
+	<property name="style" value="OBFUSCATED" />
+	<property name="build.thread.count" value="6" />
+	<property name="XmxM" value="-Xmx3048M" />
+	<property name="nroWorkers" value="1" />
+	<property name="XXMaxPermSize" value="-XX:MaxPermSize=1024M" />
+	
+	<!-- MENU PRINCIPAL -->
+	<target name="compile" description="Compile module Menu principal pharos.web.entry.PharosEntry">
+		<java classname="com.google.gwt.dev.Compiler" fork="yes" failonerror="true" maxmemory="1024m">
+			<classpath refid="base.classpath" />
+			<arg value="-logLevel" />
+			<arg value="${logLevel}" />
+			<arg value="-style" />
+			<arg value="${style}" />
+			<arg value="-war" />
+			<arg value="src/main/webapp" />
+			<arg value="-localWorkers" />
+			<arg value="${nroWorkers}" />
+			<arg value="com.sinergia.touch.test.Test" />
+		</java>
+	</target>
+	<target name="superdev" description="Run Super Dev Mode">
+		<java failonerror="true" fork="true" classname="com.google.gwt.dev.codeserver.CodeServer">
+			<classpath refid="base.classpath" />
+			<jvmarg value="${XmxM}" />
+			<arg value="com.sinergia.touch.test.Test" />
+		</java>
+	</target>
+
+	<path id="base.classpath">
+		<pathelement location="${gwt.home}/gwt-user.jar" />
+		<pathelement location="${gwt.home}/gwt-dev.jar" />
+		<pathelement location="${gwt.home}/validation-api-1.0.0.GA-sources.jar" />
+		<pathelement location="${gwt.home}/validation-api-1.0.0.GA.jar" />
+		<pathelement location="${gwt.home}/gwt-codeserver.jar" />
+		<pathelement location="src/main/java" />
+		
+		<pathelement location="src/main/webapp/WEB-INF/classes" />
+		
+		
+	</path>
+
+</project>
