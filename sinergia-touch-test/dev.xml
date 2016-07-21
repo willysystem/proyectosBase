@@ -1,12 +1,8 @@
 <?xml version ="1.0" encoding="utf-8" ?>
-<project name="Pharos Modules Compile" default="compile" basedir=".">
-	<description>
-		 Este archivo permite compilar un modulo, un grupo de modulos o todos a vez.
-	</description>
+<project name="Compile and Super Dev Mode" default="compile" basedir=".">
 
 	<property environment="env" />
 	<property name="gwt.home" value="I:\dev\gwt-2.7.0" />
-	<property name="m2.directory" value="C:\Users\Ciro_2\.m2\repository" />
 	<property name="logLevel" value="ERROR" />
 	<!-- INFO, TRACE, DEGUG, ERROR -->
 	<property name="style" value="OBFUSCATED" />
@@ -16,7 +12,7 @@
 	<property name="XXMaxPermSize" value="-XX:MaxPermSize=1024M" />
 	
 	<!-- MENU PRINCIPAL -->
-	<target name="compile" description="Compile module Menu principal pharos.web.entry.PharosEntry">
+	<target name="compile" description="Compile ">
 		<java classname="com.google.gwt.dev.Compiler" fork="yes" failonerror="true" maxmemory="1024m">
 			<classpath refid="base.classpath" />
 			<arg value="-logLevel" />
