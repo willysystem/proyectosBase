@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+	<Properties>
+		<Property name="log-path">c:\dev\apps\curso\logs\</Property>
+	</Properties>
+
+	<Appenders>
+		<RollingFile name="FileLogger" fileName="${log-path}/curso-log.log"
+			filePattern="${log-path}/RVF-%d{yyyy-MM-dd}.log">
+			<PatternLayout pattern="%d | %-5level | %t | %c (%L) : %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+		</RollingFile>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d | %-5level | %t | %c (%L) : %m%n" />
+		</Console>
+		<!-- <JDBC name="databaseAppender" tableName="app_log"> <DataSource jndiName="java:jboss/datasources/abc-LOGDS" 
+			/> <Column name="eventdate" isEventTimestamp="true" /> <Column name="level" 
+			pattern="%level" isUnicode="false" /> <Column name="logger" pattern="%logger" 
+			isUnicode="false" /> <Column name="message" pattern="%message" isUnicode="false" 
+			/> <Column name="exception" pattern="%ex{full}" isUnicode="false" /> </JDBC> -->
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="STDOUT" />
+			<AppenderRef ref="FileLogger" />
+			<!-- <AppenderRef ref="databaseAppender" /> -->
+		</Root>
+	</Loggers>
+</Configuration>
