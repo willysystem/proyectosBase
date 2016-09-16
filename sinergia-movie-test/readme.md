@@ -1,7 +1,7 @@
 Spring Boot sample - Movies 
 ------------------
 
-An example of how use touch event in GWT.
+An example of how use Spring boot
 
 Two cases of use:
 
